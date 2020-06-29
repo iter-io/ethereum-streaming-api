@@ -1,0 +1,6 @@
+[submodule "src/ethereum-etl"]
+	path = src/ethereum-etl
+	url = git@github.com:iter-io/ethereum-etl.git
+[submodule "src/ethereum-etl-postgres"]
+	path = src/ethereum-etl-postgres
+	url = git@github.com:iter-io/ethereum-etl-postgres.git
