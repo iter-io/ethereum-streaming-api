@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ethereum-etl
+spec:
+  selector:
+    matchLabels:
+      app: ethereum-etl
+  serviceName: ethereum-etl
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ethereum-etl
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: ethereum-etl
+        image: 609256465469.dkr.ecr.us-east-1.amazonaws.com/iter-io/ethereum-etl:20200627T160632
+        args:
+          - "stream"
+          - "--provider-uri"
+          - "https://shared-parity-mainnet.nodes.deploy.radar.tech/?apikey=5ac9916b53d0ac81506783f9c3dc51eaecc9439d95813ba1"
+          - "--output"
+          - "POSTGRESQL_DSN"
+          - "--start-block"
+          - "10356550"
